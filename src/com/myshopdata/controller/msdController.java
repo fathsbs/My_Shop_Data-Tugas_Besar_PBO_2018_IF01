@@ -11,7 +11,6 @@ import com.myshopdata.model.modelmyShopdata;
 import com.myshopdata.view.AboutView;
 import com.myshopdata.view.homeView;
 import com.myshopdata.view.kategoriView;
-import com.myshopdata.view.loginView;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -70,12 +69,7 @@ public class msdController {
 
     }
     
-    public void updateProduk(homeView view){
-        if (view.getTabelProduk().getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(view, "Silahkan seleksi baris data yang akan di ubah");
-            return;
-        }
-        
+    public void updateProduk(homeView view){        
         Integer id = Integer.parseInt(view.getTxtid().getText());
         
         String kode_barang = view.getTxtkode().getText();
@@ -114,11 +108,6 @@ public class msdController {
     }
     
     public void deleteProduk(homeView view){
-        
-        if (view.getTabelProduk().getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(view, "Silahkan seleksi baris data yang akan di hapus");
-            return;
-        }
         
         if (JOptionPane.showConfirmDialog(view, "Anda Yakin Akan Menghapus ?") == JOptionPane.OK_OPTION) {
             String kode_barang = view.getTxtkode().getText();
