@@ -79,7 +79,7 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         r.close();
         s.close();
         
-       
+        BtnEnabled(false);
         
     }
 
@@ -408,23 +408,8 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         kategori.setText("Kategori");
 
         txtnamabarang.setBackground(new java.awt.Color(255, 255, 255));
-        txtnamabarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnamabarangActionPerformed(evt);
-            }
-        });
 
         cbkategori.setBackground(new java.awt.Color(255, 255, 255));
-        cbkategori.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbkategoriItemStateChanged(evt);
-            }
-        });
-        cbkategori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbkategoriActionPerformed(evt);
-            }
-        });
 
         jumlah.setForeground(new java.awt.Color(51, 51, 51));
         jumlah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -470,21 +455,11 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         kode.setText("Kode");
 
         txtkode.setBackground(new java.awt.Color(255, 255, 255));
-        txtkode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtkodeActionPerformed(evt);
-            }
-        });
 
         txtid.setEditable(false);
         txtid.setBackground(new java.awt.Color(255, 255, 255));
         txtid.setForeground(new java.awt.Color(0, 0, 0));
         txtid.setBorder(null);
-        txtid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
-            }
-        });
 
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("ID");
@@ -573,6 +548,11 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
                 "ID", "Kode", "Nama Barang", "Kategori", "Jumlah", "Ukuran", "Harga"
             }
         ));
+        tabelProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelProdukMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelProduk);
 
         btnhapus.setBackground(new java.awt.Color(255, 51, 51));
@@ -843,6 +823,10 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         btnhapus.setEnabled(x);
     }
     
+    private void GetData_View(){
+        BtnEnabled(true);
+    }
+    
     private void barpanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barpanel1MousePressed
         xx = evt.getX();
         xy = evt.getY();
@@ -1004,10 +988,6 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         about.setVisible(true);
     }//GEN-LAST:event_btnboutMouseClicked
 
-    private void txtnamabarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamabarangActionPerformed
-        
-    }//GEN-LAST:event_txtnamabarangActionPerformed
-
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
         controller.deleteProduk(this);
     }//GEN-LAST:event_btnhapusActionPerformed
@@ -1018,12 +998,8 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
     }//GEN-LAST:event_btnubahActionPerformed
 
     private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
-        // TODO add your handling code here:
+        txtkode.requestFocus();
     }//GEN-LAST:event_btntambahActionPerformed
-
-    private void txtkodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtkodeActionPerformed
 
     private void btnkategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkategoriActionPerformed
         try {
@@ -1044,21 +1020,13 @@ public class homeView extends javax.swing.JFrame implements MSDListener, ListSel
         controller.insertProduk(this);
     }//GEN-LAST:event_btnsimpanActionPerformed
 
-    private void cbkategoriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbkategoriItemStateChanged
-
-    }//GEN-LAST:event_cbkategoriItemStateChanged
-
-    private void cbkategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbkategoriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbkategoriActionPerformed
-
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-       
-    }//GEN-LAST:event_txtidActionPerformed
-
     private void minimalizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimalizeMousePressed
         homeView.this.setState(Frame.ICONIFIED);
     }//GEN-LAST:event_minimalizeMousePressed
+
+    private void tabelProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelProdukMouseClicked
+        GetData_View();
+    }//GEN-LAST:event_tabelProdukMouseClicked
 
     /**
      * @param args the command line arguments
